@@ -14,7 +14,7 @@ class BaseUnit(ABC):
         """
         При инициализации класса Unit используем свойства класса UnitClass
         """
-        self.name = ...
+        self.name = name
         self.unit_class = unit_class
         self.hp = unit_class.max_health
         self.stamina = unit_class.max_stamina
@@ -50,6 +50,8 @@ class BaseUnit(ABC):
         return damage
 
     def get_damage(self, damage: int) -> Optional[int]:
+
+        # self.health_points =- self.damage
         # TODO получение урона целью
         #      присваиваем новое значение для аттрибута self.hp
         pass

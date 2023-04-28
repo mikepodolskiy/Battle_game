@@ -41,28 +41,26 @@ class Skill(ABC):
         """
         self.user = user
         self.target = target
-        if self._is_stamina_enough:
+        if self._is_stamina_enough():
             return self.skill_effect()
         return f"{self.user.name} попытался использовать {self.name} но у него не хватило выносливости."
 
 
 class FuryPunch(Skill):
-    name = ...
-    stamina = ...
-    damage = ...
+    name = "Fury punch"
+    stamina = 6
+    damage = 12
 
     def skill_effect(self):
-        # TODO логика использования скилла -> return str
-        # TODO в классе нам доступны экземпляры user и target - можно использовать любые их методы
-        # TODO именно здесь происходит уменшение стамины у игрока применяющего умение и
-        # TODO уменьшение здоровья цели.
-        # TODO результат применения возвращаем строкой
-        pass
+        self.user.stamina -= self.stamina
+        self.target.get_damage(self.damage)
+
 
 class HardShot(Skill):
-    name = ...
-    stamina = ...
-    damage = ...
+    name = "Hard shot"
+    stamina = 5
+    damage = 15
 
     def skill_effect(self):
-        pass
+        self.user.stamina -= self.stamina
+        self.target.get_damage(self.damage)
