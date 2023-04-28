@@ -1,3 +1,4 @@
+import random
 from dataclasses import dataclass
 from typing import List
 from random import uniform
@@ -8,16 +9,21 @@ import json
 
 @dataclass
 class Armor:
-    pass
+    name: str
+    defence: float
+
 
 
 @dataclass
 class Weapon:
-    pass
+    name: str
+    min_damage: float
+    max_damage: float
 
     @property
     def damage(self):
-        pass
+        actual_damage = random.uniform(low=self.min_damage, high=self.max.damage, size=None)
+        return actual_damage
 
 
 @dataclass
