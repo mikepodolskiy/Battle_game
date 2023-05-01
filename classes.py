@@ -3,14 +3,14 @@ from abc import ABC, abstractmethod
 
 from skills import Skill, FuryPunch, HardShot
 
-
-class Resource(ABC):
-    @abstractmethod
-    def meth1(self):
-        pass
-
-    def meth2(self):
-        pass
+#
+# class Resource(ABC):
+#     @abstractmethod
+#     def meth1(self):
+#         pass
+#
+#     def meth2(self):
+#         pass
 
 @dataclass
 class UnitClass:
