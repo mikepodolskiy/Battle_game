@@ -55,6 +55,8 @@ class FuryPunch(Skill):
         self.user.stamina -= self.stamina
         self.target.get_damage(self.damage)
 
+        return f"{self.user.name} использует {self.name} но у него не хватило выносливости."
+
 
 class HardShot(Skill):
     name = "Hard shot"
@@ -64,3 +66,5 @@ class HardShot(Skill):
     def skill_effect(self):
         self.user.stamina -= self.stamina
         self.target.get_damage(self.damage)
+
+        return f"{self.user.name} использует {self.name} но у него не хватило выносливости."

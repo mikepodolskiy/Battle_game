@@ -4,12 +4,12 @@ from abc import ABC, abstractmethod
 from skills import Skill, FuryPunch, HardShot
 
 
-class REsource(ABC):
+class Resource(ABC):
     @abstractmethod
     def meth1(self):
         pass
 
-    def meth1(self):
+    def meth2(self):
         pass
 
 @dataclass
