@@ -54,7 +54,7 @@ def use_skill():
     return render_template("fight.html", heroes=heroes, result=result)
     # TODO кнопка использования скилла
     # TODO логика пркатикчески идентична предыдущему эндпоинту
-    pass
+
 
 
 @app.route("/fight/pass-turn")

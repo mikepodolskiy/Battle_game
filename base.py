@@ -31,11 +31,13 @@ class Arena(metaclass=BaseSingleton):
         if self.player.hp <= 0:
             if self.enemy.hp > 0:
                 self.battle_result = "Игрок проиграл битву"
-            self.battle_result = "Ничья"
+            else:
+                self.battle_result = "Ничья"
         else:
             if self.enemy.hp <= 0:
                 self.battle_result = "Игрок выиграл битву"
-            return None
+            else:
+                return None
         # TODO ПРОВЕРКА ЗДОРОВЬЯ ИГРОКА И ВРАГА
         # TODO проверка здоровья игрока и врага и возвращение результата строкой:
         # TODO может быть три результата:
@@ -97,7 +99,7 @@ class Arena(metaclass=BaseSingleton):
         # TODO возвращаем результат удара строкой
         result = self.player.hit(self.enemy)
         turn_result = self.next_turn()
-        return f"{result } - {turn_result}"
+        return f"{result } <br> {turn_result}"
 
 
 
@@ -109,4 +111,4 @@ class Arena(metaclass=BaseSingleton):
         # TODO возвращаем результат удара строкой
         result = self.player.use_skill(self.enemy)
         turn_result = self.next_turn()
-        return f"{result } - {turn_result}"
+        return f"{result } <br> {turn_result}"

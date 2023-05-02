@@ -71,7 +71,7 @@ class BaseUnit(ABC):
     def get_damage(self, damage: int) -> Optional[int]:
         if damage > 0:
             if self.hp - damage > 0:
-                self.hp =- damage
+                self.hp -= damage
             else:
                 self.hp = 0
         # TODO получение урона целью
@@ -116,10 +116,10 @@ class PlayerUnit(BaseUnit):
         damage = self._count_damage(target)
         if damage > 0:
             return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} " \
-                   f"\соперника и наносит {damage} урона."
+                   f"соперника и наносит {damage} урона."
         if damage <= 0:
             return f"{self.name} используя {self.weapon.name} наносит удар, но {target.armor.name} cоперника " \
-                   f" \его останавливает."
+                   f" его останавливает."
 
         # TODO результат функции должен возвращать следующие строки:
         # f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} соперника и наносит {damage} урона."
@@ -146,10 +146,10 @@ class EnemyUnit(BaseUnit):
         damage = self._count_damage(target)
         if damage > 0:
             return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} " \
-                   f"\и наносит Вам {damage} урона."
+                   f"и наносит Вам {damage} урона."
         if damage <= 0:
             return f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name}" \
-                   f" \его останавливает."
+                   f" его останавливает."
         # TODO результат функции должен возвращать результат функции skill.use или же следующие строки:
         # f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} и наносит Вам {damage} урона."
         # f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name} его останавливает."
