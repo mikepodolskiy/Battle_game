@@ -35,7 +35,7 @@ Warrior = UnitClass(
     )
 
 Thief = UnitClass(
-name="Warior",
+name="Thief",
     max_health=50.0,
     max_stamina=25.0,
     attack=1.5,

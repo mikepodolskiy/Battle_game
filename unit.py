@@ -146,9 +146,9 @@ class EnemyUnit(BaseUnit):
         damage = self._count_damage(target)
         if damage > 0:
             return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} " \
-                   f"\соперника и наносит {damage} урона."
+                   f"\и наносит Вам {damage} урона."
         if damage <= 0:
-            return f"{self.name} используя {self.weapon.name} наносит удар, но {target.armor.name} cоперника " \
+            return f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name}" \
                    f" \его останавливает."
         # TODO результат функции должен возвращать результат функции skill.use или же следующие строки:
         # f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} и наносит Вам {damage} урона."

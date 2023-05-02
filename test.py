@@ -47,4 +47,10 @@ equipment = {
 def get_weapons_names(object) -> list:
     return [weapon.name for weapon in object.weapons]
 
-print(get_weapons_names(equipment))
+# print(get_weapons_names(equipment))
+
+heroes = {
+    "player": 1,
+    "enemy": 2
+}
+print(heroes.keys())
