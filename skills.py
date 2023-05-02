@@ -1,3 +1,4 @@
+# import required libraries
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
@@ -5,9 +6,10 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from unit import BaseUnit
 
+# creates abstract class from ABC
 class Skill(ABC):
     """
-    Базовый класс умения
+    Defines abstract methods
     """
     user = None
     target = None
@@ -36,8 +38,7 @@ class Skill(ABC):
 
     def use(self, user: BaseUnit, target: BaseUnit) -> str:
         """
-        Проверка, достаточно ли выносливости у игрока для применения умения.
-        Для вызова скилла везде используем просто use
+        checks if stamina enough for some action, applies action, shows required message
         """
         self.user = user
         self.target = target
@@ -46,6 +47,7 @@ class Skill(ABC):
         return f"{self.user.name} попытался использовать {self.name} но у него не хватило выносливости."
 
 
+# creating special skills classes from Skill class, defines its effects
 class FuryPunch(Skill):
     name = "Fury punch"
     stamina = 6

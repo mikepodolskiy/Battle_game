@@ -1,12 +1,13 @@
-import random
+# import required libraries and modules
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import Optional
 from random import uniform
 import marshmallow_dataclass
 import marshmallow
 import json
 
 
+# creating Armor dataclass according to flow
 @dataclass
 class Armor:
     id: int
@@ -15,7 +16,7 @@ class Armor:
     stamina_per_turn: float
 
 
-
+# creating Weapon dataclass according to flow
 @dataclass
 class Weapon:
     id: int
@@ -24,47 +25,63 @@ class Weapon:
     max_damage: float
     stamina_per_hit: float
 
-
     @property
     def damage(self):
-        actual_damage = uniform(low=self.min_damage, high=self.max.damage, size=None)
+        """
+        method for real damage in required range
+        """
+        actual_damage = round(uniform(self.min_damage, self.max_damage), 1)
         return actual_damage
 
 
+# creating Equipment class fo lists of possible weapons and armors from the source
 @dataclass
 class EquipmentData:
-    # TODO содержит 2 списка - с оружием и с броней
     weapons: list[Weapon]
     armors: list[Armor]
 
 
+# creating Equipment class
 class Equipment:
 
     def __init__(self):
         self.equipment = self._get_equipment_data()
 
     def get_weapon(self, weapon_name) -> Optional[Weapon]:
+        """
+        method for getting weapon object by name
+        """
         for item in self.equipment.weapons:
             if item.name == weapon_name:
                 return item
         return None
 
     def get_armor(self, armor_name) -> Optional[Armor]:
-        # TODO возвращает объект брони по имени
+        """
+        method for getting armor object by name
+        """
         for item in self.equipment.armors:
             if item.name == armor_name:
                 return item
         return None
 
     def get_weapons_names(self) -> list:
+        """
+        method for getting list of weapons names
+        """
         return [item.name for item in self.equipment.weapons]
 
     def get_armors_names(self) -> list:
-        return [item.name  for item in self.equipment.armors]
+        """
+        method for getting list of weapons names
+        """
+        return [item.name for item in self.equipment.armors]
 
     @staticmethod
     def _get_equipment_data() -> EquipmentData:
-        # TODO этот метод загружает json в переменную EquipmentData
+        """
+        method for loading data from file to Equipment data instance
+        """
         with open("./data/equipment.json") as f:
             data = json.load(f)
             equipment_schema = marshmallow_dataclass.class_schema(EquipmentData)
@@ -72,6 +89,3 @@ class Equipment:
             return equipment_schema().load(data)
         except marshmallow.exceptions.ValidationError:
             raise ValueError
-
-
-
