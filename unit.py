@@ -24,11 +24,11 @@ class BaseUnit(ABC):
 
     @property
     def health_points(self):
-        return self.hp
+        return round(self.hp, 1)
 
     @property
     def stamina_points(self):
-        return  self.stamina
+        return  round(self.stamina, 1)
 
     def equip_weapon(self, weapon: Weapon):
         self.weapon = weapon
@@ -43,7 +43,7 @@ class BaseUnit(ABC):
         # attacker stamina check, if stamina is enough calculate damage considering unit type and weapon type,
         # otherwise damage is 0
         if self.stamina > self.weapon.stamina_per_hit:
-            weapon_damage = round(uniform(self.weapon.min_damage, self.weapon.max_damage), 1) * self.unit_class.attack
+            weapon_damage = uniform(self.weapon.min_damage, self.weapon.max_damage) * self.unit_class.attack
             self.stamina -= self.weapon.stamina_per_hit
             # defender stamina check, if stamina is enough - calculate defence considering unit type and armor type,
             # otherwise armor is 0
@@ -53,7 +53,7 @@ class BaseUnit(ABC):
             else:
                 target_armor = 0
 
-            damage = round(weapon_damage - target_armor, 1)
+            damage = weapon_damage - target_armor
         else:
             damage = 0
 

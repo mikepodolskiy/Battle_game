@@ -27,7 +27,7 @@ class Weapon:
 
     @property
     def damage(self):
-        actual_damage = round(uniform(low=self.min_damage, high=self.max.damage, size=None), 1)
+        actual_damage = uniform(low=self.min_damage, high=self.max.damage, size=None)
         return actual_damage
 
 
@@ -73,6 +73,5 @@ class Equipment:
         except marshmallow.exceptions.ValidationError:
             raise ValueError
 
-# eq = Equipment()
-# print(eq.get_armors_names())
+
 
